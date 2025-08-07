@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    background: url(/hutao.jpg) no-repeat;
+    background: black;
     background-size: cover;
     background-position: center;
 }
@@ -108,5 +108,6 @@ margin: 20px 0 15px;
     text-decoration: underline;
 
 }
+
 
 
