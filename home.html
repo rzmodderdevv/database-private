@@ -1,184 +1,192 @@
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vertical Image Slider</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
+  <meta charset="UTF-8">
+  <title>KOLEKSI GAMBAR</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
             background-size: cover;
-            
             position: relative;
-        }
-
-        /* Styling for the title (h1) */
-        h1 {
-            font-family: 'Arial', sans-serif; /* Menggunakan font Arial */
-            font-size: 40px; /* Ukuran font yang cukup besar */
-            font-weight: bold; /* Menebalkan font */
-            color: #fff; /* Warna teks putih */
-            text-align: center; /* Menyelaraskan teks di tengah */
-            text-transform: uppercase; /* Mengubah semua huruf menjadi kapital */
-            letter-spacing: 2px; /* Memberikan jarak antar huruf */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Menambahkan bayangan pada teks */
-            margin-bottom: 20px; /* Memberikan jarak bawah pada elemen */
-            padding: 10px; /* Memberikan padding untuk memberi ruang di dalam elemen */
-            background-color: rgba(0, 0, 0, 0.6); /* Memberikan latar belakang semi-transparan */
-            border-radius: 10px; /* Membuat sudut lebih melengkung */
-            max-width: 80%; /* Membatasi lebar judul */
-            margin-left: auto; /* Membuat margin kiri otomatis untuk pemusatan */
-            margin-right: auto; /* Membuat margin kanan otomatis untuk pemusatan */
-        }
-        /* Container for the image slider */
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 600px;
-            height: 600px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        /* Image Slider Styling */
-        .image-slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .slider-images {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
-        }
-
-        .slider-images img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-bottom: 5px solid #fff;
-            position: relative;
-        }
-
-        /* Navigation arrows */
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .nav-arrow-left {
-            left: 10px;
-        }
-
-        .nav-arrow-right {
-            right: 10px;
-        }
-
-        /* Disabled button style */
-        .nav-arrow:disabled {
-            background-color: rgba(0, 0, 0, 0.3);
-            cursor: not-allowed;
-        }
-    </style>
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      overflow-y: auto;
+      height: 80vh;
+      border: 2px solid #ccc;
+      background: white;
+      padding: 10px;
+    }
+    .slide {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .slide img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      border: 1px solid #aaa;
+    }
+    .preview-btn {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #444;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .preview-btn:hover {
+      background-color: #666;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal img {
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      margin: 50px auto;
+    }
+    .modal:target {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>KOLEKSI GAMBAR</h1>
+<h1>KOLEKSI GAMBAR</h1>
+<div class="container">
 
-    <div class="container">
-        <div class="image-slider" id="imageSlider">
-            <div class="slider-images" id="sliderImages">
-                <!-- Using new image links -->
-                <img src="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" alt="Image">
-<img src="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520" alt="Image">
-<img src="https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740" alt="Image">
-<img src="https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451" alt="Image">
-<img src="https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" alt="Image">
-<img src="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" alt="Image">
-            </div>
-            <!-- Navigation arrows -->
-            <button class="nav-arrow nav-arrow-left" id="prevBtn" disabled>↑</button>
-            <button class="nav-arrow nav-arrow-right" id="nextBtn">↓</button>
-        </div>
-    </div>
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392')">Preview</button>
+  </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sliderImages = document.getElementById("sliderImages");
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888')">Preview</button>
+  </div>
 
-            let currentIndex = 0;
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074')">Preview</button>
+  </div>
 
-            // Function to update the slider position
-            function updateSliderPosition() {
-                const translateY = -currentIndex * 600; // Adjust height for each image (600px)
-                sliderImages.style.transform = `translateY(${translateY}px)`;
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947')">Preview</button>
+  </div>
 
-                // Disable/enable buttons based on the current position
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === sliderImages.children.length - 1;
-            }
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328')">Preview</button>
+  </div>
 
-            // Handle next (down) button click
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < sliderImages.children.length - 1) {
-                    currentIndex++;
-                    updateSliderPosition();
-                }
-            });
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520')">Preview</button>
+  </div>
 
-            // Handle previous (up) button click
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSliderPosition();
-                }
-            });
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740')">Preview</button>
+  </div>
 
-            // Initialize the first position of the slider
-            updateSliderPosition();
-        });
-    </script>
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062')">Preview</button>
+  </div>
+
+  <div class="slide">
+    <img src="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" alt="gambar">
+    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103')">Preview</button>
+  </div>
+
+</div>
+
+<div id="imageModal" class="modal" onclick="this.style.display='none'">
+  <img id="modalImage" src="" alt="Preview">
+</div>
+
+<script>
+  function openPreview(src) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = src;
+  }
+</script>
 
 </body>
 </html>
-
