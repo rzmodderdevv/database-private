@@ -1,171 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webtoon Vertical Slider</title>
+    <title>Vertical Image Slider</title>
     <style>
-        /* Global styles */
+        /* Global Styles */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             height: 100vh;
             background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
             background-size: cover;
-             /* Blur effect for background */
+            
             position: relative;
         }
 
+        /* Styling for the title (h1) */
+        h1 {
+            font-family: 'Arial', sans-serif; /* Menggunakan font Arial */
+            font-size: 40px; /* Ukuran font yang cukup besar */
+            font-weight: bold; /* Menebalkan font */
+            color: #fff; /* Warna teks putih */
+            text-align: center; /* Menyelaraskan teks di tengah */
+            text-transform: uppercase; /* Mengubah semua huruf menjadi kapital */
+            letter-spacing: 2px; /* Memberikan jarak antar huruf */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Menambahkan bayangan pada teks */
+            margin-bottom: 20px; /* Memberikan jarak bawah pada elemen */
+            padding: 10px; /* Memberikan padding untuk memberi ruang di dalam elemen */
+            background-color: rgba(0, 0, 0, 0.6); /* Memberikan latar belakang semi-transparan */
+            border-radius: 10px; /* Membuat sudut lebih melengkung */
+            max-width: 80%; /* Membatasi lebar judul */
+            margin-left: auto; /* Membuat margin kiri otomatis untuk pemusatan */
+            margin-right: auto; /* Membuat margin kanan otomatis untuk pemusatan */
+        }
+        /* Container for the image slider */
         .container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 1;
             width: 80%;
             max-width: 600px;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         /* Image Slider Styling */
         .image-slider {
             position: relative;
             width: 100%;
-            height: 400px; /* Set height for image container */
-            overflow: hidden; /* Hide anything outside of the container */
-            border: 5px solid #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .slider-images {
             display: flex;
-            flex-direction: column; /* Stack images vertically */
-            transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+            flex-direction: column;
+            transition: transform 0.3s ease;
         }
 
         .slider-images img {
             width: 100%;
-            height: 400px; /* Set height for each image */
-            object-fit: cover; /* Ensure the images cover the container area */
+            height: 100%;
+            object-fit: cover;
             border-bottom: 5px solid #fff;
+            position: relative;
         }
 
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            padding: 0 20px;
-        }
-
-        .controls button {
+        /* Navigation arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.7);
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 10px;
+            font-size: 20px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border: none;
+            border-radius: 50%;
+            z-index: 2;
         }
 
-        .controls button:hover {
+        .nav-arrow:hover {
             background-color: rgba(0, 0, 0, 0.9);
         }
 
-        /* Modal for Preview Image */
-        .preview-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
+        .nav-arrow-left {
+            left: 10px;
         }
 
-        .preview-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .preview-content img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
+        .nav-arrow-right {
             right: 10px;
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
         }
 
-        .close-btn:hover {
-            color: red;
+        /* Disabled button style */
+        .nav-arrow:disabled {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
         }
-
-        /* CSS for the Preview Button (centered at the bottom) */
-.image-preview {
-    position: absolute;
-    bottom: 0px; /* Place the button 20px from the bottom */
-    left: 50%;
-    transform: translateX(-50%); /* Center the button horizontally */
-    z-index: 2;
-    text-align: center;
-}
-
-.image-preview button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 10px;
-    font-size: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.image-preview button:hover {
-    background-color: #444;
-}
-
-/* CSS untuk styling elemen h1 */
-h1 {
-    font-family: 'Arial', sans-serif; /* Menggunakan font Arial */
-    font-size: 10px; /* Ukuran font yang cukup besar */
-    font-weight: bold; /* Menebalkan font */
-    color: #fff; /* Warna teks putih */
-    text-align: center; /* Menyelaraskan teks di tengah */
-    text-transform: uppercase; /* Mengubah semua huruf menjadi kapital */
-    letter-spacing: 2px; /* Memberikan jarak antar huruf */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Menambahkan bayangan pada teks */
-    margin-bottom: 20px; /* Memberikan jarak bawah pada elemen */
-    padding: 10px; /* Memberikan padding untuk memberi ruang di dalam elemen */
-    background-color: rgba(0, 0, 0, 0.6); /* Memberikan latar belakang semi-transparan */
-    border-radius: 10px; /* Membuat sudut lebih melengkung */
-    max-width: 80%; /* Membatasi lebar judul */
-    margin-left: auto; /* Membuat margin kiri otomatis untuk pemusatan */
-    margin-right: auto; /* Membuat margin kanan otomatis untuk pemusatan */
-}
-
     </style>
 </head>
 <body>
-<h1>Koleksi Gambar</h1>
+
+    <h1>Vertical Image Slider</h1>
+
     <div class="container">
-        <div class="image-slider">
+        <div class="image-slider" id="imageSlider">
             <div class="slider-images" id="sliderImages">
+                <!-- Using new image links -->
                 <img src="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" alt="Image">
-<img src="https://wimg.rule34.xxx//samples/2334/sample_94504cfed0da091cac06e455c74106b6.jpg?11394653" alt="Image2">
-<img src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" alt="Image3">
+<img src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" alt="Image">
 <img src="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" alt="Image">
 <img src="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" alt="Image">
 <img src="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" alt="Image">
@@ -183,114 +133,51 @@ h1 {
 <img src="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" alt="Image">
 <img src="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" alt="Image">
 <img src="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" alt="Image">
-<img src="https://i.ibb.co.com/cchkR9x/Screenshot-20241114-181701.jpg" alt="Image">
-<img src="https://i.ibb.co.com/3pSghYX/Screenshot-20241114-182240.jpg" alt="Image">
-<img src="https://i.ibb.co.com/9hm9ZK0/RDT-20241114-1824021916134948538668035.webp" alt="Image">
             </div>
-        </div>
-
-        <div class="controls">
-            <button id="prevBtn">Up</button>
-            <button id="nextBtn">Down</button>
-        </div>
-
-        <div class="image-preview">
-            <button id="previewBtn">Preview Image</button>
+            <!-- Navigation arrows -->
+            <button class="nav-arrow nav-arrow-left" id="prevBtn" disabled>↑</button>
+            <button class="nav-arrow nav-arrow-right" id="nextBtn">↓</button>
         </div>
     </div>
 
-    <!-- Modal for Preview -->
-    <div class="preview-modal" id="previewModal">
-        <div class="preview-content">
-            <span class="close-btn" id="closePreviewBtn">&times;</span>
-            <img id="previewImg" src="" alt="Preview">
-        </div>
-    </div>
-
-    <!-- JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const images = [
-                "https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392",
-"https://wimg.rule34.xxx//samples/2334/sample_94504cfed0da091cac06e455c74106b6.jpg?11394653",
-"https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888",
-"https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074",
-"https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947",
-"https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328",
-"https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520",
-"https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740",
-"https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381",
-"https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451",
-"https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004",
-"https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636",
-"https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864",
-"https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689",
-"https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952",
-"https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697",
-"https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642",
-"https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835",
-"https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062",
-"https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103",
-"https://i.ibb.co.com/cchkR9x/Screenshot-20241114-181701.jpg",
-"https://i.ibb.co.com/3pSghYX/Screenshot-20241114-182240.jpg",
-"https://i.ibb.co.com/9hm9ZK0/RDT-20241114-1824021916134948538668035.webp",
-            ];
-
-            let currentImageIndex = 0;
-
             const sliderImages = document.getElementById("sliderImages");
             const prevBtn = document.getElementById("prevBtn");
             const nextBtn = document.getElementById("nextBtn");
-            const previewBtn = document.getElementById("previewBtn");
-            const previewModal = document.getElementById("previewModal");
-            const previewImg = document.getElementById("previewImg");
-            const closePreviewBtn = document.getElementById("closePreviewBtn");
 
-            // Update the position of images based on current index
+            let currentIndex = 0;
+
+            // Function to update the slider position
             function updateSliderPosition() {
-                const translateY = -currentImageIndex * 400; // Each image height is 400px
+                const translateY = -currentIndex * 600; // Adjust height for each image (600px)
                 sliderImages.style.transform = `translateY(${translateY}px)`;
+
+                // Disable/enable buttons based on the current position
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === sliderImages.children.length - 1;
             }
 
-            // Handle Next (Down) Button
-            nextBtn.addEventListener("click", function() {
-                if (currentImageIndex < images.length - 1) {
-                    currentImageIndex++;
+            // Handle next (down) button click
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < sliderImages.children.length - 1) {
+                    currentIndex++;
                     updateSliderPosition();
                 }
             });
 
-            // Handle Prev (Up) Button
-            prevBtn.addEventListener("click", function() {
-                if (currentImageIndex > 0) {
-                    currentImageIndex--;
+            // Handle previous (up) button click
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
                     updateSliderPosition();
                 }
             });
 
-            // Handle Preview Button
-            previewBtn.addEventListener("click", function() {
-                previewModal.style.display = "flex";
-                previewImg.src = images[currentImageIndex];
-            });
-
-            // Handle Close Preview
-            closePreviewBtn.addEventListener("click", function() {
-                previewModal.style.display = "none";
-            });
-
-            // Close preview modal when clicking outside the image
-            previewModal.addEventListener("click", function(e) {
-                if (e.target === previewModal) {
-                    previewModal.style.display = "none";
-                }
-            });
-
-            // Initialize the first image position
+            // Initialize the first position of the slider
             updateSliderPosition();
         });
     </script>
 
 </body>
 </html>
-
