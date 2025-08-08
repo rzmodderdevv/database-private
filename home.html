@@ -1,195 +1,76 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>KOLEKSI GAMBAR</title>
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   HOME
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
+   body {
+      font-family: 'Inter', sans-serif;
       background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
     }
-    h1 {
-      text-align: center;
-      padding: 20px;
-      background-color: #333;
-      color: white;
-      margin: 0;
-    }
-    .container {
-      max-width: 400px;
-      margin: 20px auto;
-      overflow-y: auto;
-      height: 80vh;
-      border: 2px solid #ccc;
-      background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-      padding: 10px;
-    }
-    .slide {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .slide img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      border: 1px solid #aaa;
-    }
-    .preview-btn {
-      margin-top: 10px;
-      padding: 5px 10px;
-      background-color: #444;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    .preview-btn:hover {
-      background-color: #666;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.9);
-    }
-    .modal img {
-      display: block;
-      max-width: 90%;
-      max-height: 90%;
-      margin: 50px auto;
-    }
-    .modal:target {
-      display: block;
-    }
+.bg-blue {
+     background-color: #8B3E2F;
+   }
+   .hover\:bg-blue-dark:hover {
+     background-color: #6B2B20;
+   }
+   .border-blue {
+     border-color: #8B3E2F;
+   }
+   .text-blue {
+     color: #8B3E2F;
+   }
+   .hover\:bg-blue-light:hover {
+     background-color: #F3E6E1;
   </style>
-</head>
-<body>
-
-<h1>KOLEKSI GAMBAR</h1>
-<div class="container">
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392')">Preview</button>
+ </head>
+ <body class="min-h-screen flex flex-col items-center justify-center px-5 py-10 bg-white">
+  <div class="max-w-sm w-full bg-white rounded-3xl shadow-lg p-8 flex flex-col items-center">
+   <img alt="Logo s.id, simple black text with dot, minimalistic style" class="w-20 h-20 mb-6" height="100" src="https://avatars.githubusercontent.com/u/117552177?v=4" width="100"/>
+   <h1 class="text-3xl font-extrabold mb-6 text-gray-900">
+    KOLEKSI GAMBAR
+   </h1>
+   <p class="text-center text-gray mb-8 px-4">
+    Database Gambar Private by Rezz
+   </p>
+   <nav class="w-full flex flex-col space-y-4">
+    <a aria-label="Koleksi gambar" class="flex items-center justify-center gap-3 bg-blue hover:bg-blue text-white font-semibold rounded-xl py-3 transition" href="/kurumi.html">
+     <i class="fas fa-solid fa-image text-lg">
+     </i>
+     Kurumi Image
+    </a>
+    <a aria-label="Koleksi gambar" class="flex items-center justify-center gap-3 bg-blue hover:bg-blue text-white font-semibold rounded-xl py-3 transition" href="#">
+     <i class="fas fa-solid fa-image text-lg">
+     </i>
+     Harga
+    </a>
+    <a aria-label="Koleksi gambar" class="flex items-center justify-center gap-3 bg-blue hover:bg-blue text-white font-semibold rounded-xl py-3 transition" href="#">
+     <i class="fas fa-solid fa-image text-lg">
+     </i>
+     None()
+    </a>
+    <a aria-label="Koleksi gambar" class="flex items-center justify-center gap-3 bg-blue hover:bg-blue text-white font-semibold rounded-xl py-3 transition" href="#">
+     <i class="fas fa-solid fa-image text-lg">
+     </i>
+     None()
+    </a>
+    <a aria-label="Keluar" class="flex items-center justify-center gap-3 border border-blue text-blue font-semibold rounded-xl py-3 hover:bg-blue-50 transition" href="/login.html">
+     <i class="fas fa-sign-in-alt text-lg">
+     </i>
+     Kembali ke Login
+    </a>
+   </nav>
+   <p class="mt-10 text-xs text-gray-400 select-none">
+    © 2024 Rezz -Database Gambar Pribadi
+   </p>
   </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062')">Preview</button>
-  </div>
-
-  <div class="slide">
-    <img src="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" alt="gambar">
-    <button class="preview-btn" onclick="openPreview('https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103')">Preview</button>
-  </div>
-
-</div>
-
-<div id="imageModal" class="modal" onclick="this.style.display='none'">
-  <img id="modalImage" src="" alt="Preview">
-</div>
-
-<script>
-  function openPreview(src) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-    modal.style.display = "block";
-    modalImg.src = src;
-  }
-</script>
-
-</body>
+ </body>
 </html>
-
