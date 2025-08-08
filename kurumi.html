@@ -1,0 +1,308 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Halaman Slide Gambar Minimalis - Brown Red Style
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+      background: url('https://raw.githubusercontent.com/rzmodderdevv/web-login/refs/heads/main/hutao.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    /* Hide scrollbar for all browsers */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    /* Slide container */
+    #slide-container {
+      max-width: 480px;
+      width: 100%;
+      height: 80vh;
+      background: #f3e6e1; /* lighter brown-red background for content */
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Title bar */
+    #title-bar {
+      background-color: rgba(139, 62, 47, 0.9);
+      color: #f3e6e1;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      margin: 1rem auto 0.75rem auto;
+      max-width: 480px;
+      user-select: none;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      font-family: 'Inter', sans-serif;
+    }
+    /* Image wrapper */
+    #image-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+    }
+    #image-wrapper a {
+      scroll-snap-align: start;
+      border-radius: 1.5rem 1.5rem 0 0;
+      display: block;
+      user-select: none;
+      outline-offset: 2px;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+    #image-wrapper a:focus,
+    #image-wrapper a:hover {
+      box-shadow: 0 0 10px 3px rgba(139, 62, 47, 0.7);
+      outline: none;
+    }
+    #image-wrapper img {
+      width: 100%;
+      display: block;
+      border-radius: 1.5rem 1.5rem 0 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* Navigation buttons */
+    .nav-button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(139, 62, 47, 0.85);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+      user-select: none;
+    }
+    .nav-button:hover {
+      background-color: rgba(139, 62, 47, 1);
+    }
+    #prev-btn {
+      top: 0.75rem;
+    }
+    #next-btn {
+      bottom: 0.75rem;
+    }
+    /* Page indicator */
+    #page-indicator {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: rgba(139, 62, 47, 0.85);
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      user-select: none;
+      z-index: 10;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      #slide-container {
+        max-width: 100%;
+        height: 90vh;
+        border-radius: 1rem;
+      }
+      #title-bar {
+        max-width: 100%;
+        font-size: 1.125rem;
+        margin: 1rem 0 0.75rem 0;
+        padding: 0.6rem 1rem;
+        border-radius: 1rem;
+      }
+      .nav-button {
+        font-size: 1.25rem;
+        padding: 0.4rem 0.8rem;
+      }
+      #page-indicator {
+        font-size: 0.75rem;
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+ </head>
+ <body>
+  <h1 id="title-bar" role="heading" aria-level="1">
+   Kurimi Image
+  </h1>
+  <main aria-label="Slide gambar webtoon minimalis" id="slide-container" role="main">
+   <button aria-label="Gambar sebelumnya" class="nav-button" id="prev-btn" tabindex="0" type="button">
+    <i class="fas fa-chevron-up">
+    </i>
+   </button>
+   <div aria-atomic="true" aria-live="polite" class="no-scrollbar" id="image-wrapper" tabindex="0">
+ <a href="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/1674/sample_5107a73d6a502387bc73f76f431107cf.jpg?11668392" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2242/sample_bd1c3fc4bc3784b3c7b31b2b6b1966cb.jpg?11182888" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//images/2212/5206786a95732ca96d1796801c725d41.jpeg?11017074" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/3084/sample_3ed3d318b3305da9e0c38d543bbfc602.jpg?9825947" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/6695/sample_303cf2a8d439b867bfb6e92e779e3da1.jpg?7641328" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/6043/sample_2f6b854ae33d1bc14096e89f534ec3df.jpg?6875520" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//images/4694/54db1c13b7adff61a5cb49a3aa05899e7df684dc.png?5348740" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//images/4431/9db91b031385f5dec6cb26a8ff2a7703.jpeg?5045381" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/4169/sample_1a88afd40c3d4ec125c72b4c5728ea34.jpg?4738451" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//images/3924/33df11499dcf65591c153ac5893ded773239a387.jpg?4447004" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2996/sample_18b82774ce4993431956ea5c4f81318a8d2c57ab.jpg?3357636" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2990/sample_276f082bfbf18718376b42bfa3e0460b9e1fc8f5.jpg?3350864" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2474/sample_a9cc7e95fcb74902beeba9fcfba71eb68ad0ca11.jpg?2743689" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/1482/sample_ac587cb813c6ed354cd542ca783dc4347cc019c2.jpg?1563952" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2186/sample_8c40a5f82e240010d1ac69879a621281d7d0005e.jpg?2372697" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/2030/sample_b366af351f87557263639469b15e5d2f4585ad57.jpg?2198642" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/843/sample_d96e622122f25560d64233b82348f07a.jpg?10517835" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//images/5267/fde626b8842b7b64c5d80a2ea4bb9d6c.jpeg?6003062" width="480"/>
+</a>
+<a href="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" download="gambar" aria-label="Download gambar" tabindex="0">
+    <img alt="Gambar" draggable="false" height="720" loading="lazy" src="https://wimg.rule34.xxx//samples/5194/sample_544f9344191492e660e7545426bac518.jpg?5919103" width="480"/>
+</a>
+   </div>
+   <button aria-label="Gambar berikutnya" class="nav-button" id="next-btn" tabindex="0" type="button">
+    <i class="fas fa-chevron-down">
+    </i>
+   </button>
+   <div aria-atomic="true" aria-live="polite" id="page-indicator">
+    1 / 5
+   </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js">
+  </script>
+  <script>
+   (() => {
+      const imageWrapper = document.getElementById('image-wrapper');
+      const links = imageWrapper.querySelectorAll('a');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      const pageIndicator = document.getElementById('page-indicator');
+      const total = links.length;
+      let currentIndex = 0;
+
+      // Scroll to image by index
+      function scrollToIndex(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+        currentIndex = index;
+        const targetLink = links[index];
+        targetLink.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        updatePageIndicator();
+      }
+
+      // Update page indicator text
+      function updatePageIndicator() {
+        pageIndicator.textContent = `${currentIndex + 1} / ${total}`;
+      }
+
+      // Button event handlers
+      prevBtn.addEventListener('click', () => {
+        scrollToIndex(currentIndex - 1);
+      });
+      nextBtn.addEventListener('click', () => {
+        scrollToIndex(currentIndex + 1);
+      });
+
+      // Keyboard navigation for accessibility
+      imageWrapper.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+          e.preventDefault();
+          scrollToIndex(currentIndex + 1);
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          scrollToIndex(currentIndex - 1);
+        }
+      });
+
+      // Update currentIndex on manual scroll
+      let scrollTimeout;
+      imageWrapper.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          let closestIndex = 0;
+          let closestDistance = Infinity;
+          const scrollTop = imageWrapper.scrollTop;
+          links.forEach((link, i) => {
+            const offset = link.offsetTop;
+            const distance = Math.abs(offset - scrollTop);
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestIndex = i;
+            }
+          });
+          currentIndex = closestIndex;
+          updatePageIndicator();
+        }, 100);
+      });
+
+      // Initialize
+      scrollToIndex(0);
+    })();
+  </script>
+ </body>
+</html>
